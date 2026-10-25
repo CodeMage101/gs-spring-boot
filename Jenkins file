@@ -12,12 +12,14 @@ pipeline {
     stages {
         stage('Checkout Source Code') {
             steps {
-                checkout scm
+                git branch: 'main', url: 'https://github.com/CodeMage101/gs-spring-boot.git'
             }
         }
 
         stage('Test') {
             steps {
+                sh 'git --version'
+                sh 'mvn --version'
                 sh 'mvn clean test'
             }
         }
